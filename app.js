@@ -38,6 +38,7 @@ function Switch(switchValues) {
   this.id = switchValues.id || "sw";
   this.state = switchValues.state || "off";
   this.name = switchValues.name || "switch";
+  console.log(this.state);
   this.toggle = function() {
     if (this.state === "on") {
       console.log('State = on');

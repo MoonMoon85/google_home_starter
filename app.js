@@ -119,7 +119,7 @@ app.get("/api/switches/:id", function(req, res) {
   res.json(found);
 });
 
-app.post("/api/switches/:id", function(req, res) {
+app.post("localhost:8000/API/switches/sw1?password=admin", function(req, res) {
   console.log('post ran')
   // For now, uses a simple password query in the url string.
   // Example: POST to localhost:8000/API/switches/sw1?password=test
@@ -128,11 +128,11 @@ app.post("/api/switches/:id", function(req, res) {
 
     // Optional On / Off command. If not included, defaults to a toggle.
 
-    if (!(req.query.command === "on" || req.query.command === "off")) {
-      foundSwitch.toggle();
-    } else {
-      foundSwitch.setState(req.query.command);
-    }
+    // if (!(req.query.command === "on" || req.query.command === "off")) {
+    //   foundSwitch.toggle();
+    // } else {
+    //   foundSwitch.setState(req.query.command);
+    // }
 
     saveState();
     console.log("postSwitch " + JSON.stringify(foundSwitch));

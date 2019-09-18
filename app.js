@@ -127,11 +127,11 @@ app.post("/api/switches/:id", function(req, res) {
 
     // Optional On / Off command. If not included, defaults to a toggle.
 
-    if (!(req.query.command === "on" || req.query.command === "off")) {
-      foundSwitch.toggle();
-    } else {
-      foundSwitch.setState(req.query.command);
-    }
+    // if (!(req.query.command === "on" || req.query.command === "off")) {
+    //   foundSwitch.toggle();
+    // } else {
+    //   foundSwitch.setState(req.query.command);
+    // }
 
     saveState();
     console.log("postSwitch " + JSON.stringify(foundSwitch));

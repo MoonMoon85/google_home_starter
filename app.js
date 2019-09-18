@@ -64,9 +64,11 @@ function Switch(switchValues) {
 
 // needed due to a quirk with PythonShell
 function onString(number) {
+  console.log('on string ran');
   return "./public/python/sw" + number + "_on.py";
 }
 function offString(number) {
+  console.log('on string ran');
   return "./public/python/sw" + number + "_off.py";
 }
 

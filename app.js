@@ -51,6 +51,8 @@ function Switch(switchValues) {
   this.setState = function(state) {
     console.log('Set state ran');
     var str = state === "on" ? onString(this.id[2]) : offString(this.id[2]);
+    console.log('ID =');
+    console.log(this.id[2]);
     PythonShell.run(str, function(err) {
       console.log('Pythin code ran');
       if (!process.env.DEV) {

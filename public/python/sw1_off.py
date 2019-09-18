@@ -1,5 +1,5 @@
 # Edit line 6 to match your chosen GPIO pin
-
+print 'Pi off'
 import RPi.GPIO as GPIO
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)

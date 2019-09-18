@@ -51,6 +51,7 @@ function Switch(switchValues) {
   };
   this.setState = function(state) {
     var str = state === "on" ? onString(this.id[2]) : offString(this.id[2]);
+    console.log('str' + str)
     PythonShell.run(str, function(err) {
       if (!process.env.DEV) {
         if (err) throw err;
@@ -104,9 +105,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // If you have a frontend, drop it in the Public folder with an entry point of index.html
-app.get("/", function(req, res) {
-  res.sendFile("index");
-});
+// app.get("/", function(req, res) {
+//   res.sendFile("index");
+// });
 
 // Switch Routes for API
 app.get("/api/switches", function(req, res) {

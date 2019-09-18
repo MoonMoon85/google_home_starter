@@ -50,7 +50,7 @@ function Switch(switchValues) {
     }
   };
   this.setState = function(state) {
-    var str = state === "on" ? onString(this.id[2]) : offString(this.id[2]);
+    var str = state === "off" ? onString(this.id[2]) : offString(this.id[2]);
     console.log('str' + str)
     PythonShell.run(str, function(err) {
       if (!process.env.DEV) {

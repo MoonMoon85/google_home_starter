@@ -22,6 +22,7 @@ readableStream.on("end", function() {
   var parsed = JSON.parse(data);
 
   for (i = 0; i < parsed.switches.length; i++) {
+    console.log(parsed.switches[i])
     switches.push(new Switch(parsed.switches[i]));
   }
 });
@@ -34,12 +35,12 @@ readableStream.on("end", function() {
 // }
 
 function Switch(switchValues) {
-  console.log('Switch functon ran');
   this.id = switchValues.id || "sw";
   this.state = switchValues.state || "off";
   this.name = switchValues.name || "switch";
   console.log(this.state);
   this.toggle = function() {
+    console.log('toggle functon ran');
     if (this.state === "on") {
       console.log('State = on');
       this.setState("off");
@@ -120,6 +121,7 @@ app.get("/api/switches/:id", function(req, res) {
 });
 
 app.post("/api/switches/:id", function(req, res) {
+  console.log('post ran')
   // For now, uses a simple password query in the url string.
   // Example: POST to localhost:8000/API/switches/sw1?password=test
   if (req.query.password === process.env.PASS) {
@@ -127,11 +129,11 @@ app.post("/api/switches/:id", function(req, res) {
 
     // Optional On / Off command. If not included, defaults to a toggle.
 
-    // if (!(req.query.command === "on" || req.query.command === "off")) {
-    //   foundSwitch.toggle();
-    // } else {
-    //   foundSwitch.setState(req.query.command);
-    // }
+    if (!(req.query.command === "on" || req.query.command === "off")) {
+      foundSwitch.toggle();
+    } else {
+      foundSwitch.setState(req.query.command);
+    }
 
     saveState();
     console.log("postSwitch " + JSON.stringify(foundSwitch));

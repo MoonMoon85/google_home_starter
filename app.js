@@ -34,19 +34,24 @@ readableStream.on("end", function() {
 // }
 
 function Switch(switchValues) {
+  console.log('Switch functon ran');
   this.id = switchValues.id || "sw";
   this.state = switchValues.state || "off";
   this.name = switchValues.name || "switch";
   this.toggle = function() {
     if (this.state === "on") {
+      console.log('State = on');
       this.setState("off");
     } else {
+      console.log('State = on');
       this.setState("on");
     }
   };
   this.setState = function(state) {
+    console.log('Set state ran');
     var str = state === "on" ? onString(this.id[2]) : offString(this.id[2]);
     PythonShell.run(str, function(err) {
+      console.log('Pythin code ran');
       if (!process.env.DEV) {
         if (err) throw err;
       }
